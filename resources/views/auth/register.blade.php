@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="author" content="Kodinger">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Register page</title>
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/my-login.css">
-</head>
+<x-header/>
 <body class="my-login-page">
-	<section class="h-100">
+	<section class="h-100 mt-4">
 		<div class="container h-100">
 			<div class="row justify-content-md-center h-100">
 				<div class="card-wrapper">
@@ -87,9 +78,5 @@
 		</div>
 	</section>
 
-<script src="jquery-3.4.1.min.js"></script>
-	<script src="bootstrap/js/popper.js"></script>
-	<script src="bootstrap/js/bootstrap.js"></script>
-	<script src="js/my-login.js"></script>
-</body>
-</html>
+<!-- ======= Footer ======= -->
+<x-footer/>
