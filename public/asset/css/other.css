@@ -811,8 +811,19 @@
     margin-top: 20px;
     width: 100%;
   }
-
-
+  .main-form-section{
+      margin-top: 100px;
+  }
+  .form-section{
+      display: none;
+      padding-left: 15px;
+  }
+ .current{
+    display: inherit!important;
+}
+.parsley-error-list{
+    margin: 2px 0 3px;padding: 0;list-style-type: none; color: red;
+}
 /* ---------------------------
     6. SERVIE BOTTOM AREA
 ----------------------------- */

@@ -1,10 +1,15 @@
 <?php
-
+use App\Http\Controllers\LoanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\AboutComponent;
+use App\Http\Livewire\MissionComponent;
+use App\Http\Livewire\ChairmanMgsComponent;
+use App\Http\Livewire\LoansComponent;
+use App\Http\Livewire\LoanApplyFormComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +25,19 @@ Route::get('/', function () {
 });
 */
 Route::get('/', HomeComponent::class);
+Route::get('/about', AboutComponent::class);
+Route::get('/mission', MissionComponent::class);
+Route::get('/chairmanmgs', ChairmanMgsComponent::class);
+Route::get('/loans', LoansComponent::class);
+
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
 });
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
+Route::get('/loansform', LoanApplyFormComponent::class,);
+Route::get('/loansform', [LoanController::class, "Loan"]);
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
         Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
@@ -44,5 +55,6 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHisto
     Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
     Route::get('profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('settings',[UserController::class,'settings'])->name('user.settings');
+   
     
 });

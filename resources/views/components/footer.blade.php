@@ -62,18 +62,47 @@
         </div>
     </footer><!-- End Footer -->
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{asset('./asset/js/parsley.min.js')}}"></script>
     <script src="{{asset('./asset/js/script.js')}}"></script>
-    <script src="{{asset('./asset/js/slide.js')}}"></script>
     <script src="{{asset('./asset/Carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('./asset/Animation/wow.min.js')}}"></script>
     <script src="{{asset('./asset/js/datetime.js')}}"></script>
     <script src="{{asset('./asset/js/navbar.js')}}"></script>
     <script src="{{asset('./asset/js/script.js')}}"></script>
+    <script>
+        
+$(function(){
+    var $sections = $('.form-section');
+    function navigateTo(index){
+        $sections.removeClass('current').eq(index).addClass('current');
+        $('.form-navigation .previous').toggle(index>0);
+        var atTheEnd = index >= $sections.length -1;
+        $('.form-navigation .next').toggle(!atTheEnd);
+        $('.form-navigation [type=submit]').toggle(atTheEnd);
+    }
+    function curIndex(){
+        return $sections.index($sections.filter('.current'));
+    }
+    $('.form-navigation .previous').click(function(){
+        navigateTo(curIndex()-1);
+    });
+    $('.form-navigation .next').click(function(){
+        $(".contact-form").parsley().whenValidate({
+            group: 'block-' + curIndex()
+        }).done(function(){
+            navigateTo(curIndex()+1);
+        });
+    });
+    $sections.each(function(index, section){
+        $(section).find(':input').attr('data-parsley-group','block'+ index);
+    });
+    navigateTo(0);
+});
+    </script>
 @livewireScripts
 
 </body>

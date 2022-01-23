@@ -32,11 +32,10 @@
 </head>
 
 <body onload="renderTime();">
-    <!--Preeloader Start-->
-   <!--Preeloader Start-->
+   <!--Preloader-->
    <div id="preloader">
-        <div id="status">&nbsp;</div>
-    </div>
+       <div id="status"></div>
+   </div>
     <!--Top Header Start-->
     <div class="header-top">
         <div class="container">
@@ -51,25 +50,20 @@
             </div>
                 
                  @if (Route::has('login')){
-                     @auth
-                     @if(Auth::user()->role === '1')
-
+                    <div class="ht-right">
+                    <a href="/login" class="login-panel"><i
+                            class="fa fa-user"></i>Login</a>
+                    <div class="lan-selector"></div>
+                 </div>
                     @else
                     <div class="ht-right">
                     <a href="/login" class="login-panel"><i
                             class="fa fa-user"></i>logout</a>
                     <div class="lan-selector"></div>
                  </div>
-                      endif
-                         
-                     @endauth
-                 @else
-                 <div class="ht-right">
-                    <a href="/login" class="login-panel"><i
-                            class="fa fa-user"></i>Login</a>
-                    <div class="lan-selector"></div>
-                 </div>
-                 @endif
+                      
+                
+                 
                  @endif
                 </div>
     </div>
